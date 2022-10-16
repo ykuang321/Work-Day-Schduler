@@ -1,7 +1,7 @@
 var currentDay = document.getElementById('currentDay');
 var timeBlockHour = document.getElementsByClassName('hour');
 var currentHour = moment().format('H');
-var displayEventColor = document.getElementsByClassName('description');
+var displayEvent = document.getElementsByClassName('description');
 
 //display current day/time in header
 setInterval(() => {
@@ -16,24 +16,33 @@ for (var i=0; i<timeBlockHour.length; i++){
   var compTableHour = parseInt(timeBlockHour[i].dataset['number']);
 
   if(compCurrentHour > compTableHour){
-    displayEventColor[i].classList.add("past");
+    displayEvent[i].classList.add("past");
   }
 
   else if(compCurrentHour === compTableHour){
-    displayEventColor[i].classList.add("present");
+    displayEvent[i].classList.add("present");
   }
 
   else if(compCurrentHour < compTableHour){
-    displayEventColor[i].classList.add("future");
+    displayEvent[i].classList.add("future");
   }
 };
 
 //add event listener
 $(".saveBtn").on("click", function(){
 
-var textInput = $(this).find(".description");
-console.log(textInput);
-var test = textInput.val();
-console.log(test);
+  //get key and value from textarea
+  var storageKey = $(this).siblings(".description").attr("id");
+  var storageValue = $(this).siblings(".description").val();
+
+  localStorage.setItem(storageKey, storageValue);
 
 });
+
+//display event
+for (var i=0; i<timeBlockHour.length; i++){  
+
+  displayEvent[i].value = localStorage.getItem(i);
+
+}
+
