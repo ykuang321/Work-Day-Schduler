@@ -37,7 +37,7 @@ This application should include:
 
 The following image shows the web application's appearance:
 
-*Start Page:*
+*Main Page:*
 ![Work Day Scheduler.](./assets/image/Work_Day_Scheduler.png)
 
 

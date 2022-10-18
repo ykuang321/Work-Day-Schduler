@@ -40,9 +40,9 @@ $(".saveBtn").on("click", function(){
 });
 
 //display event
-for (var i=0; i<timeBlockHour.length; i++){  
+for (var i=0; i<timeBlockHour.length; i++){ 
 
   displayEvent[i].value = localStorage.getItem(i);
-
+  
 }
 
